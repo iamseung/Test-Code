@@ -23,9 +23,12 @@ public class OrderService {
 
     public OrderResponse createOrder(OrderCreateRequest request, LocalDateTime registeredDateTime) {
         List<String> productNumbers = request.getProductNumbers();
-
         List<Product> products = findProductsBy(productNumbers);
 
+        // 재고 차감 체크가 필요한 상품들 Filter
+        // 재고 엔티티 조회
+        // 상품별 Counting
+        // 재고 차감 시도
 
         Order order = Order.create(products, registeredDateTime); // Order
         Order savedOrder = orderRepository.save(order);
