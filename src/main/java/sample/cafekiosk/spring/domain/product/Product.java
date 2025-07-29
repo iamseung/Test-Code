@@ -1,15 +1,13 @@
 package sample.cafekiosk.spring.domain.product;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import sample.cafekiosk.spring.domain.BaseEntity;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
+@ToString
 public class Product extends BaseEntity {
 
     @Id
