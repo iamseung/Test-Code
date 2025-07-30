@@ -10,12 +10,9 @@ import sample.cafekiosk.spring.domain.product.ProductSellingStatus;
 import sample.cafekiosk.spring.domain.product.ProductType;
 
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.tuple;
-import static org.junit.jupiter.api.Assertions.*;
 import static sample.cafekiosk.spring.domain.product.ProductSellingStatus.*;
 import static sample.cafekiosk.spring.domain.product.ProductType.HANDMADE;
 
@@ -110,6 +107,45 @@ class ProductRepositoryTest {
                         tuple("002", "카페라떼", HOLD)
                 );
 
+    }
+
+    @DisplayName("가장 마지막으로 저장한 상품 아이디를 가져온다")
+    @Test
+    void findLatestProduct() {
+        // given
+        String targetProductNumber = "003";
+
+        Product product1 = createProduct("001", HANDMADE, SELLING, "아메리카노", 4000);
+        Product product2 = createProduct("002", HANDMADE, HOLD, "카페라떼", 4400);
+        Product product3 = createProduct("003", HANDMADE, STOP_SELLING, "팥빙수", 7000);
+
+        productRepository.saveAll(List.of(product1, product2, product3));
+
+        // when
+        String latestProductNumber = productRepository.findLatestProductNumber();
+
+        // then
+        assertThat(latestProductNumber).isEqualTo(targetProductNumber);
+    }
+
+    @DisplayName("가장 마지막으로 저장한 상품 아이디를 읽어올 때, 상품이 하나도 없는 경우에는 Null 을 반환한다.")
+    @Test
+    void findLatestProductWhenProductIsEmpty() {
+        // when
+        String latestProductNumber = productRepository.findLatestProductNumber();
+
+        // then
+        assertThat(latestProductNumber).isNull();
+    }
+
+    private Product createProduct(String productNumber, ProductType type, ProductSellingStatus sellingStatus, String name, int price) {
+        return Product.builder()
+                .productNumber(productNumber)
+                .type(type)
+                .sellingStatus(sellingStatus)
+                .name(name)
+                .price(price)
+                .build();
     }
 
 }
