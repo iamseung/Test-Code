@@ -7,9 +7,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class MailSendClient {
 
-    public boolean sendMail(String fromEmail, String toEmail, String subject, String content) {
+    public boolean sendEmail(String fromEmail, String toEmail, String subject, String content) {
         log.info("메일 전송");
-
-        return true;
+        throw new IllegalArgumentException("메일 전송 실패");
     }
 }
