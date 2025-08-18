@@ -81,4 +81,8 @@ class OrderTest {
     private void BB() {
 
     }
+
+    private void CC() {
+
+    }
 }
