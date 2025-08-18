@@ -77,4 +77,8 @@ class OrderTest {
     private void AA() {
 
     }
+
+    private void BB() {
+
+    }
 }
