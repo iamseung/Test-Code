@@ -89,4 +89,8 @@ class OrderTest {
     private void DD() {
 
     }
+
+    private void EE() {
+
+    }
 }
