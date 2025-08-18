@@ -74,5 +74,7 @@ class OrderTest {
                 .build();
     }
 
+    private void b() {
 
+    }
 }
