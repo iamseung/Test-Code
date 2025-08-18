@@ -73,24 +73,4 @@ class OrderTest {
                 .name("메뉴 이름")
                 .build();
     }
-
-    private void AA() {
-
-    }
-
-    private void BB() {
-
-    }
-
-    private void CC() {
-
-    }
-
-    private void DD() {
-
-    }
-
-    private void EE() {
-
-    }
 }
