@@ -73,4 +73,8 @@ class OrderTest {
                 .name("메뉴 이름")
                 .build();
     }
+
+    private void b() {
+
+    }
 }
